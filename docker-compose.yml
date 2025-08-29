@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # Front-end service
+  traviway-frontend:
+    build: ./Frontend
+    ports:
+      - "3000:80"  # Corrected port mapping to match Dockerfile
+    depends_on:
+      - api-gateway
+    networks:
+      - traviway-network
+
+  # Service discovery server
+  eureka-server:
+    build: ./Backend/eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - traviway-network
+
+  # API Gateway
+  api-gateway:
+    build: ./Backend/api-gateway
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - eureka-server
+    networks:
+      - traviway-network
+
+  # Backend microservices
+  authservice:
+    build: ./Backend/authservice
+    ports:
+      - "8089:8089"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - eureka-server
+    networks:
+      - traviway-network
+
+  contactservice:
+    build: ./Backend/ContactService
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - eureka-server
+    networks:
+      - traviway-network
+
+  contentservice:
+    build: ./Backend/ContentService
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - eureka-server
+    networks:
+      - traviway-network
+
+  flightbookingservice:
+    build: ./Backend/FlightBookingService
+    ports:
+      - "8085:8085"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - eureka-server
+    networks:
+      - traviway-network
+
+  traviway:
+    build: ./Backend/Travyway  # The corrected path
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - eureka-server
+    networks:
+      - traviway-network
+
+  # Database service
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: Traiway
+    networks:
+      - traviway-network
+
+networks:
+  traviway-network:
+    driver: bridge
