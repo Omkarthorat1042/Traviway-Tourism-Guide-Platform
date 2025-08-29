@@ -13,10 +13,10 @@
     </parent>
 
     <groupId>com.contentservice</groupId>
-    <artifactId>ContentService</artifactId>
+    <artifactId>contentservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>ContentService</name>
+    <name>contentservice</name>
     <description>Demo project for CDAC Travyway</description>
 
     <properties>

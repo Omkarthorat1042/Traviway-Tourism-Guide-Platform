@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.adminservice</groupId>
-	<artifactId>ContactService</artifactId>
+	<artifactId>contactservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>ContactService</name>
+	<name>contactservice</name>
 	<description>Demo project for cdac travyway project for admin service</description>
 	<url/>
 	<licenses>

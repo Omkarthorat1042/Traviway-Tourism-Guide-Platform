@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.travyway</groupId>
-	<artifactId>Travyway</artifactId>
+	<artifactId>travyway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>Travyway</name>
+	<name>travyway</name>
 	<description>Demo project for cdac travyway project</description>
 	<url />
 	<licenses>

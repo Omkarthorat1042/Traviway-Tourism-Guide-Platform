@@ -8,9 +8,9 @@
         <version>3.4.2</version>
         <relativePath/> </parent>
     <groupId>com.flightbooking</groupId>
-    <artifactId>FlightBookingService</artifactId>
+    <artifactId>flightbookingservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>FlightBookingService</name>
+    <name>flightbookingservice</name>
     <description>Flight Booking microservice for Travyway</description>
 
     <properties>
